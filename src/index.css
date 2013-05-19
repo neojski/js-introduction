@@ -80,10 +80,7 @@ body{background:rgb(226, 238, 243);}
 hr.clear{height:0;width:0;border:0;padding:0;margin:0;visibility:hidden;clear:both;}
 
 
-#qunit-tests {list-style-type:none;}
 #qunit-tests li{padding:0.4em 0.5em 0.4em 0.5em}
-#qunit-tests li strong, #qunit-tests li span.runtime{display:none}{display:none}
-
 #qunit-tests li a{display:none;}
 
 .qunit-collapsed{display:block;}
