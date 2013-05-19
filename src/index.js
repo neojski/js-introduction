@@ -81,24 +81,30 @@ var Task = Backbone.Model.extend({
       jquery:true,
       devel:true
     }, {window: false});
-    if(!result){
-      var t = _.template($('#jshintError').html());
-      var errors = JSHINT.errors.map(function(err){
-        return {
-          row: err.line,
-          col: err.character,
-          reason: err.reason,
-          evidence: err.evidence
-        };
-      });
-      $('.jshint .errors').html(t({errors: errors}));
-      $('.jshint').show(1000);
 
-      // make qunit fail
-      test('jshint', function(){
-        ok(result, 'jshint should pass');
-      });
-    }else{
+    var that = this;
+    QUnit.tests.one('done', function(e, res){
+      that.set('status', !res.failed ? 'pass' : 'fail');
+      if(typeof callback === 'function'){
+        callback();
+      }
+    });
+
+    var t = _.template($('#jshintError').html());
+    var errors = JSHINT.errors.map(function(err){
+      return {
+        row: err.line,
+        col: err.character,
+        reason: err.reason,
+        evidence: err.evidence
+      };
+    });
+
+    test('jshint', function(){
+      ok(result, 'jshint should pass');
+    });
+
+    if(result){
       $('.jshint').hide(400);
 
       var tests = this.get('tests');
@@ -111,14 +117,9 @@ var Task = Backbone.Model.extend({
         '(' + tests.toString() + ')()\n' +
         '})()'
       );
-
-      var that = this;
-      QUnit.tests.one('done', function(e, res){
-        that.set('status', !res.failed ? 'pass' : 'fail');
-        if(typeof callback === 'function'){
-          callback();
-        }
-      });
+    }else{
+      $('.jshint .errors').html(t({errors: errors}));
+      $('.jshint').show(1000);
     }
   }
 });
