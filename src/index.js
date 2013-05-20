@@ -4,7 +4,7 @@
 // for testDone as QUnit does not let us
 // unregister
 QUnit.tests = $({});
-QUnit.testDone(function(results){
+QUnit.done(function(results){
   QUnit.tests.trigger('done', results);
 });
 
