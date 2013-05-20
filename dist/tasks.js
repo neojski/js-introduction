@@ -489,6 +489,7 @@ tasks.add('clock', {
       };
 
       var c = clock(server);
+      QUnit.strictEqual(typeof c, 'function', 'clock returns function');
       c();
 
       QUnit.strictEqual(+$('#clock').text().split('-')[2], new Date().getDate(), 'correct day of month');

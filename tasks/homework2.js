@@ -277,6 +277,7 @@ tasks.add('clock', {
       };
 
       var c = clock(server);
+      strictEqual(typeof c, 'function', 'clock returns function');
       c();
 
       strictEqual(+$('#clock').text().split('-')[2], new Date().getDate(), 'correct day of month');
