@@ -91,6 +91,15 @@ tasks.add('async', {
   js: 'var done = function(fun, callback){\n\n};',
   tests: function(){
     asyncTest('done test', 27, function(){
+      var tm = setTimeout(function(){
+        // you should need no more than 2 seconds
+        // but if you're chaining functions it could take up to
+        // 10 seconds. This one is to fail loudly if you forgot
+        // to run callback somewhere
+        ok(0, 'test should finish under 20s');
+        start();
+      }, 20000);
+
       strictEqual(typeof done, 'function', 'done is a function');
 
       // this function should fire immediately
@@ -156,6 +165,9 @@ tasks.add('async', {
         done(fun, function(){
           for(var i = 0; i < 10; i++){
             strictEqual(run[i], true, i + ' function has been run');
+          }
+          if(tm){
+            clearTimeout(tm);
           }
           start();
         });
