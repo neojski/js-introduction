@@ -7,6 +7,13 @@ QUnit.tests = $({});
 QUnit.done(function(results){
   QUnit.tests.trigger('done', results);
 });
+QUnit.resetTests = function(){
+  // this is some test resetting magic. Normally you don't do that
+  // with QUnit so it doesn't work too well
+  QUnit.reset();
+  QUnit.init();
+  QUnit.start();
+};
 
 // utility used in tasks
 var U = {
@@ -62,11 +69,9 @@ var Task = Backbone.Model.extend({
     });
   },
   test: function(callback){
-    // this is some test resetting magic. Normally you don't do that
-    // with QUnit so it doesn't work too well
-    QUnit.reset();
-    QUnit.init();
-    QUnit.start();
+    QUnit.resetTests();
+
+    this.set('status', 'testing');
 
     var code = this.get('js');
 
@@ -84,7 +89,7 @@ var Task = Backbone.Model.extend({
 
     var that = this;
     QUnit.tests.one('done', function(e, res){
-      that.set('status', !res.failed ? 'pass' : 'fail');
+      that.set('status', !res.failed && res.passed > 0 ? 'pass' : 'fail');
       if(typeof callback === 'function'){
         callback();
       }
@@ -127,7 +132,7 @@ var TaskView = Backbone.View.extend({
   className: 'task',
   template: _.template($('#taskView').html()),
   events: {
-    'click .go': function(){
+    'click .go': function(e){
       var model = this.model;
       this.model.test(function(){
         model.save();
@@ -152,6 +157,8 @@ var TaskView = Backbone.View.extend({
     }
   },
   render: function(){
+    QUnit.resetTests();
+
     this.$el.html(this.template(this.model.attributes));
     $('#content').html(this.el);
 
@@ -167,8 +174,6 @@ var TaskView = Backbone.View.extend({
     editor.on('change', function(){
       that.model.set('js', editor.getSession().getValue());
     });
-
-    this.model.set('editor', editor);
   }
 });
 

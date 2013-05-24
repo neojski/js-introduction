@@ -74,6 +74,9 @@ body{background:rgb(226, 238, 243);}
 #menu li.pass a:after{
   content:"✔";color:#C6E746;
 }
+#menu li.testing a:after{
+  content:"⟳";color:#000;
+}
 
 #right-column{padding:10px;padding-left:220px;}
 
