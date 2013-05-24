@@ -1159,6 +1159,41 @@ tasks.add("factory", {
 
 tasks.module("homework");
 
+tasks.add("Roman-numerals", {
+  instruction: "Write a function `f` which takes an integer smaller than 4000 as an argument and returns a string- it's Roman representation.",
+  js: "var f = function(n){\n\n}",
+  tests: function () {
+    QUnit.test('test f', function () {
+      // for testing functions see: http://api.qunitjs.com/category/assert/
+      QUnit.notStrictEqual(f, undefined, 'f is defined');
+      QUnit.strictEqual(typeof f, 'function', 'f is a function');
+
+      QUnit.strictEqual(f(1),'I', 'basic sign no.1');
+      QUnit.strictEqual(f(5), 'V', 'basic sign no.2');
+      QUnit.strictEqual(f(50), 'L', 'basic sign no.3');
+      QUnit.strictEqual(f(100), 'C', 'basic sign no.4');
+      QUnit.strictEqual(f(1000), 'M', 'basic sign no.5');
+      QUnit.strictEqual(f(4), 'IV', 'small integer');
+      QUnit.strictEqual(f(6), 'VI', 'small integer no.2');
+      QUnit.strictEqual(f(13), 'XIII', 'integer below 20');
+      QUnit.strictEqual(f(17), 'XVII', 'integer below 20');
+      QUnit.strictEqual(f(63), 'LXIII', 'medium integer');
+      QUnit.strictEqual(f(79), 'LXXIX', 'medium integer no.2');
+      QUnit.strictEqual(f(99), 'XCIX', 'medium integer no.3');
+      QUnit.strictEqual(f(236), 'CCXXXVI', 'medium integer - above 100');
+      QUnit.strictEqual(f(444), 'CDXLIV', 'medium integer - above 100');
+      QUnit.strictEqual(f(800), 'DCCC', 'medium integer - above 500');
+      QUnit.strictEqual(f(736), 'DCCXXXVI', 'medium integer - above 500');
+      QUnit.strictEqual(f(3456), 'MMMCDLVI', 'big integer');
+      QUnit.strictEqual(f(2222), 'MMCCXXII', 'big integer no.1');
+      QUnit.strictEqual(f(1313), 'MCCCXIII', 'big integer no.2');
+      QUnit.strictEqual(f(2546), 'MMDXLVI', 'big integer no.3');
+    });
+  }
+});
+
+tasks.module("homework");
+
 tasks.add("sum-of-odd-numbers", {
   instruction: "Write a function `f` which takes arbitrary number of arrays of (possibly arrays of: possibly arrays of: and so on) integers and returns sum of odd integers from these arrays.",
   js: "var f = function(array){\n\n}",
