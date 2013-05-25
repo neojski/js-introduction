@@ -813,110 +813,6 @@ tasks.add('returning-object', {
 
 tasks.module("homework");
 
-tasks.add("prime-numbers", {
-  instruction: "Write a function `f` with takes argument `n` and returns object `{left: x, right: y}` where `x` is the largest prime number less than `n` and `y` is the smallest prime number greater than `n`. If `x` (or `y`) does not exists `x` then `x = -1` (or `y = -1`).",
-  js: "var f = function(n){\n\n}",
-  tests: function(){
-    QUnit.test('test f', function(){
-      // for testing functions see: http://api.qunitjs.com/category/assert/
-      QUnit.notStrictEqual(f, undefined, 'f is defined');
-      QUnit.strictEqual(typeof f, 'function', 'f is a function');
-
-
-      QUnit.deepEqual(f(10), {left: 7, right: 11}, 'integer');
-      QUnit.deepEqual(f(1), {left: -1, right: 2}, 'small integer');
-      QUnit.deepEqual(f(-5), {left: -1, right: 2}, 'negative integer');
-      QUnit.deepEqual(f(94322), {left: 94321, right: 94327}, 'big integer');
-      QUnit.deepEqual(f('test'), {left: -1, right: -1}, 'string');
-      QUnit.deepEqual(f(20.5), {left: 19, right: 23}, 'float');
-      QUnit.deepEqual(f(2.1), {left: 2, right: 3}, 'float2');
-    });
-  }
-});
-
-tasks.module("homework");
-
-tasks.add("sum-zero", {
-  instruction: "Write a function `f` it takes array `n`. Divide it in two other arrays first one there are elements whose don't sum to zero with other elements, the other one there are pair of elements which sum to zero. The order of elements should be like in input array. Return object with properities `rest` where are not \"zero-pair\" element and `zero` where are \"zero-pair\" elements. For example [3, 1, 2, 4, -2, -1] answer is {rest:[3, 4], zero:[1, -1, 2, -2]}. Number 0 isn't in any array. If in the array has different type than numeric return -1",
-  js: "var f = function(n){\n\n}",
-  tests: function(){
-    QUnit.test('test f', function(){
-      // for testing functions see: http://api.qunitjs.com/category/assert/
-      QUnit.notStrictEqual(f, undefined, 'f is defined');
-      QUnit.strictEqual(typeof f, 'function', 'f is a function');
-      QUnit.strictEqual(f([1, 'string', 2]), -1 , 'correct string check');
-      QUnit.deepEqual(f([1, 4, 5, 1, 2, -1, 10, -2]), {rest: [4, 5, 1, 10], zero: [1, -1, 2, -2]}, 'correct value for f([1, 4, 5, 1, 2, -1, 10, -2])');
-      QUnit.deepEqual(f([1, 5, -1]), {rest:[5], zero:[1, -1]}, 'correct value for f([1, 5, -1])');
-      QUnit.deepEqual(f([-1, 8, -8, 2, -2, 1, 3, -3, 10, 8, 1, -1, 2, 1, 6, -1, -2]), {rest:[10, 8, 6], zero:[-1, 1, 8, -8, 2, -2, 3, -3, 1, -1, 2, -2, 1, -1]}, 'correct value for f([-1, 8, -8, 2, -2, 1, 3, -3, 10, 8, 1, -1, 2, 1, 6, -1, -2])');
-      QUnit.deepEqual(f([4, -5, 5, -4, 7, 7, -2, 2, 5, 4, -7, 1, 4, 8]), {rest:[7, 5, 4, 1, 4, 8], zero:[4, -4, -5, 5, 7, -7, -2, 2]}, 'correct value for f([4, -5, 5, -4, 7, 7, -2, 2, 5, 4, -7, 1, 4, 8])');
-      QUnit.deepEqual(f([3, 9, -10, 1, 5, 4, 5, 5, 8, -6, 2, -4, 9, -9, -5, 4, 10, 6, 4, 5]), {rest:[3, 1, 5, 5, 8, 2, 9, 4, 4, 5], zero:[9, -9, -10, 10, 5, -5, 4, -4, -6, 6]}, 'correct value for f([3, 9, -10, 1, 5, 4, 5, 5, 8, -6, 2, -4, 9, -9, -5, 4, 10, 6, 4, 5])');
-      QUnit.deepEqual(f([6, -8, 3, -10, 4, 2, -6, -1, -6, 5, -4, 7, 3, 2, -2, 3, 2, 7, 6, 5, 4, -6, 1, 8, 7, 10, 6, 2, 8, 8, -10, -8, -7, 8, 10, 2, 4, -1, 1, 3, 2, -5, -1, 4, 2, -2, 9, -3, 10, -2, 6, -2, 5, 3, 1, 10, -8, 7, 4]
-), {rest:[3, 3, 7, 5, 4, 7, 8, 2, 4, 3, 2, 4, 2, 9, 10, 6, 5, 3, 10, 7, 4], zero:[6, -6, -8, 8, 3, -3, -10, 10, 4, -4, 2, -2, -1, 1, -6, 6, 5, -5, 7, -7, 2, -2, 2, -2, -6, 6, 2, -2, 8, -8, 8, -8, -10, 10, -1, 1, -1, 1]}, 'correct value 40 elements');
-      QUnit.deepEqual(f([]), {rest:[], zero:[]}, 'correct value for f([])');
-    });
-  }
-});
-
-tasks.module("homework");
-
-tasks.add("function-composition", {
-  instruction: "Write a function compose(f, g) which, for given functions f:Y->Z, g:X->Y, returns function h=f∘g. You can assume that g takes only one argument.",
-  js: "var compose = function(f, g){\n\n}",
-  tests: function(){
-    QUnit.test('test compose', function(){
-      // for testing functions see: http://api.qunitjs.com/category/assert/
-      QUnit.notStrictEqual(compose, undefined, 'compose is defined');
-      QUnit.strictEqual(typeof compose, 'function', 'compose is a function');
-
-      var rev = function(s){ return s.split("").reverse().join(""); };
-      var doub = function(s){ return s+s; };
-      var inc = function(x){ return x+1; };
-
-      QUnit.strictEqual(typeof compose(rev, rev), 'function', 'compose returns a function');
-
-      QUnit.strictEqual(compose(doub, doub)(2), 8, 'correct value for 2*x, 2*x');
-      QUnit.strictEqual(compose(rev, rev)('wut'), 'wut', 'correct value for reverse(x), reverse(x)');
-      QUnit.strictEqual(compose(doub, rev)('abc'), 'cbacba', 'correct value for x+x, reverse(x)');
-      QUnit.strictEqual(compose(inc, doub)(4), 9, 'correct value for x+1, 2*x');
-      QUnit.strictEqual(compose(doub, inc)(4), 10, 'correct value for 2*x, x+1');
-    });
-  }
-});
-
-tasks.module("homework");
-
-tasks.add("phi", {
-  instruction: "Write a function phi which for given `n >= 1` returns `phi(n)=#{1<=k<=n : gcd(k,n)=1}`.",
-  js: "var phi = function(n) {\n\n}",
-  tests: function() {
-    QUnit.test('test', function(){
-      QUnit.notStrictEqual(phi, undefined, 'phi is defined');
-      QUnit.strictEqual(typeof phi, 'function', 'phi is a function');
-      var phiref = function(n) {
-        var res = n, sq = Math.sqrt(n)+1;
-        for (var k=2; k<=sq; k++) {
-          if (n%k === 0) {
-            res /= k;
-            res *= (k-1);
-          }
-          while (n%k === 0) n /= k;
-          if (n == 1) break;
-        }
-        if (n != 1) {
-          res /= n;
-          res *= (n-1);
-        }
-        return res;
-      };
-      for (var i=1; i<=30; i++) QUnit.strictEqual(phi(i), phiref(i), 'correct value for phi(' + i + ')');
-      var t = [131072, 100140049, 1448655, 30233088, 35026003, 100000007];
-      for (var i=0; i<t.length; i++) QUnit.strictEqual(phi(t[i]), phiref(t[i]), 'correct value for phi(' + t[i] + ')');
-    });
-  }
-});
-
-tasks.module("homework");
-
 tasks.add("fibo-numbers", {
   instruction: "Write a function `f` with takes arguments `n` and `p` and returns `{fn: n-th fibonacci number (f0 = 0, f1 = 1), sum: sum of all fibonacci numbers less or equal fn modulo p}`. For incorrect arument return `{-1, -1}`.",
   js: "var f = function(n,p){\n\n}",
@@ -947,54 +843,6 @@ tasks.add("fibo-numbers", {
       QUnit.deepEqual(f(0,2), {fn: 0, sum: 0}, 'correct value for f(0,2)');
       QUnit.deepEqual(f(-1,2), {fn: -1, sum: -1}, 'correct value for f(-1,2)');
       QUnit.deepEqual(f(1,-2), {fn: -1, sum: -1}, 'correct value for f(1,-2)');
-    });
-  }
-});
-
-tasks.module("homework");
-
-tasks.add("regexp-names", {
-  instruction: "Write a function `f` which takes string `text` as argument and returns an array of pairs of " +
-    "first name and second name. This array has to be sorted by (first name, second name) in lexicographical order and every word it contains has to be reversed after that operation. In addition to that, there is guarantee, that every name starts with uppercase, consists only of english letters  and it is surrounded by spaces on both ends. " +
-    " There is always even number of names in text and the second name is proceded by the first name.",
-  js: "var f = function(text){\n\n}",
-  tests: function(){
-    QUnit.test('test f', function(){
-      // for testing functions see: http://api.qunitjs.com/category/assert/
-      QUnit.notStrictEqual(f, undefined, 'f is defined');
-      QUnit.strictEqual(typeof f, 'function', 'f is a function');
-
-      var finder = function(text) {
-        var regexp = /\s[A-Z][a-z]+\s/g;
-        var array;
-        var names = [];
-        // whole loop is equivalent to names = text.match(regexp))
-        while((array = regexp.exec(text)) !== null) {
-          names.push(array[0].substring(1, array[0].length-1));
-        }
-        var pairs = [];
-        for(var i = 0; i < names.length; i += 2) {
-          pairs.push([names[i], names[i+1]]);
-        }
-        pairs.sort();
-        for(var i = 0; i < pairs.length; i++) {
-          pairs[i][0] = pairs[i][0].split("").reverse().join("");
-          pairs[i][1] = pairs[i][1].split("").reverse().join("");
-        }
-        return pairs;
-      };
-
-      var text1 = " Ala  Nowa  Ania  Ttr  Ola  Usd  Ula  Ksdf  Ewa  Jksd "
-      var text2 = "324230 90234 j][< Emilia ] /.,';][  Orian "
-      var text3 = " Ania  ola  Kowalska  KAsia "
-      var text4 = " --- Zofia - Rambo -****- Zofia -*%$#$%ala ula -- Norris  ++ Eulalia  // Skrzyp  iza Gordon  Freeman "
-      var text5 = "genia jadzia krycha celina barbara hilda jagoda eurydyka!"
-
-      QUnit.deepEqual(f(text1), finder(text1), 'correct value for ' + text1);
-      QUnit.deepEqual(f(text2), finder(text2), 'correct value for ' + text2);
-      QUnit.deepEqual(f(text3), finder(text3), 'correct value for ' + text3);
-      QUnit.deepEqual(f(text4), finder(text4), 'correct value for ' + text4);
-      QUnit.deepEqual(f(text5), finder(text5), 'correct value for ' + text5);
     });
   }
 });
@@ -1159,6 +1007,32 @@ tasks.add("factory", {
 
 tasks.module("homework");
 
+tasks.add("function-composition", {
+  instruction: "Write a function compose(f, g) which, for given functions f:Y->Z, g:X->Y, returns function h=f∘g. You can assume that g takes only one argument.",
+  js: "var compose = function(f, g){\n\n}",
+  tests: function(){
+    QUnit.test('test compose', function(){
+      // for testing functions see: http://api.qunitjs.com/category/assert/
+      QUnit.notStrictEqual(compose, undefined, 'compose is defined');
+      QUnit.strictEqual(typeof compose, 'function', 'compose is a function');
+
+      var rev = function(s){ return s.split("").reverse().join(""); };
+      var doub = function(s){ return s+s; };
+      var inc = function(x){ return x+1; };
+
+      QUnit.strictEqual(typeof compose(rev, rev), 'function', 'compose returns a function');
+
+      QUnit.strictEqual(compose(doub, doub)(2), 8, 'correct value for 2*x, 2*x');
+      QUnit.strictEqual(compose(rev, rev)('wut'), 'wut', 'correct value for reverse(x), reverse(x)');
+      QUnit.strictEqual(compose(doub, rev)('abc'), 'cbacba', 'correct value for x+x, reverse(x)');
+      QUnit.strictEqual(compose(inc, doub)(4), 9, 'correct value for x+1, 2*x');
+      QUnit.strictEqual(compose(doub, inc)(4), 10, 'correct value for 2*x, x+1');
+    });
+  }
+});
+
+tasks.module("homework");
+
 tasks.add("knapsack-problem", {
   instruction: "Write a function that takes four parameters: `n`, `W`, `weights[]`, `costs[]` denoting consequently: number of items, knapsack's capacity, array of items' weights and array of items' costs, and which returns the maximal total cost of items that can be taken to the knapsack so that their total weight does not exceed `W`",
   js: "var f = function(n,W,weights,costs){\n\n}",
@@ -1178,6 +1052,109 @@ tasks.add("knapsack-problem", {
       QUnit.strictEqual(f(15,37,[23,21,12,32,25,32,21,22,15,36,3,11,12,1,9],[7,7,18,18,20,11,4,6,20,7,14,15,8,12,6]), 65, 'test 8');
       QUnit.strictEqual(f(18,27,[14,2,27,24,15,21,17,14,1,9,1,11,14,8,5,21,12,12],[13,11,2,19,17,16,18,8,14,8,4,10,15,10,10,10,5,15]), 57, 'test 9');
       QUnit.strictEqual(f(11,18,[6,11,4,1,18,8,10,9,8,14,16],[9,7,8,17,16,7,10,4,2,11,10]), 36, 'test 10');
+    });
+  }
+});
+
+tasks.module("homework");
+
+tasks.add("phi", {
+  instruction: "Write a function phi which for given `n >= 1` returns `phi(n)=#{1<=k<=n : gcd(k,n)=1}`.",
+  js: "var phi = function(n) {\n\n}",
+  tests: function() {
+    QUnit.test('test', function(){
+      QUnit.notStrictEqual(phi, undefined, 'phi is defined');
+      QUnit.strictEqual(typeof phi, 'function', 'phi is a function');
+      var phiref = function(n) {
+        var res = n, sq = Math.sqrt(n)+1;
+        for (var k=2; k<=sq; k++) {
+          if (n%k === 0) {
+            res /= k;
+            res *= (k-1);
+          }
+          while (n%k === 0) n /= k;
+          if (n == 1) break;
+        }
+        if (n != 1) {
+          res /= n;
+          res *= (n-1);
+        }
+        return res;
+      };
+      for (var i=1; i<=30; i++) QUnit.strictEqual(phi(i), phiref(i), 'correct value for phi(' + i + ')');
+      var t = [131072, 100140049, 1448655, 30233088, 35026003, 100000007];
+      for (var i=0; i<t.length; i++) QUnit.strictEqual(phi(t[i]), phiref(t[i]), 'correct value for phi(' + t[i] + ')');
+    });
+  }
+});
+
+tasks.module("homework");
+
+tasks.add("prime-numbers", {
+  instruction: "Write a function `f` with takes argument `n` and returns object `{left: x, right: y}` where `x` is the largest prime number less than `n` and `y` is the smallest prime number greater than `n`. If `x` (or `y`) does not exists `x` then `x = -1` (or `y = -1`).",
+  js: "var f = function(n){\n\n}",
+  tests: function(){
+    QUnit.test('test f', function(){
+      // for testing functions see: http://api.qunitjs.com/category/assert/
+      QUnit.notStrictEqual(f, undefined, 'f is defined');
+      QUnit.strictEqual(typeof f, 'function', 'f is a function');
+
+
+      QUnit.deepEqual(f(10), {left: 7, right: 11}, 'integer');
+      QUnit.deepEqual(f(1), {left: -1, right: 2}, 'small integer');
+      QUnit.deepEqual(f(-5), {left: -1, right: 2}, 'negative integer');
+      QUnit.deepEqual(f(94322), {left: 94321, right: 94327}, 'big integer');
+      QUnit.deepEqual(f('test'), {left: -1, right: -1}, 'string');
+      QUnit.deepEqual(f(20.5), {left: 19, right: 23}, 'float');
+      QUnit.deepEqual(f(2.1), {left: 2, right: 3}, 'float2');
+    });
+  }
+});
+
+tasks.module("homework");
+
+tasks.add("regexp-names", {
+  instruction: "Write a function `f` which takes string `text` as argument and returns an array of pairs of " +
+    "first name and second name. This array has to be sorted by (first name, second name) in lexicographical order and every word it contains has to be reversed after that operation. In addition to that, there is guarantee, that every name starts with uppercase, consists only of english letters  and it is surrounded by spaces on both ends. " +
+    " There is always even number of names in text and the second name is proceded by the first name.",
+  js: "var f = function(text){\n\n}",
+  tests: function(){
+    QUnit.test('test f', function(){
+      // for testing functions see: http://api.qunitjs.com/category/assert/
+      QUnit.notStrictEqual(f, undefined, 'f is defined');
+      QUnit.strictEqual(typeof f, 'function', 'f is a function');
+
+      var finder = function(text) {
+        var regexp = /\s[A-Z][a-z]+\s/g;
+        var array;
+        var names = [];
+        // whole loop is equivalent to names = text.match(regexp))
+        while((array = regexp.exec(text)) !== null) {
+          names.push(array[0].substring(1, array[0].length-1));
+        }
+        var pairs = [];
+        for(var i = 0; i < names.length; i += 2) {
+          pairs.push([names[i], names[i+1]]);
+        }
+        pairs.sort();
+        for(var i = 0; i < pairs.length; i++) {
+          pairs[i][0] = pairs[i][0].split("").reverse().join("");
+          pairs[i][1] = pairs[i][1].split("").reverse().join("");
+        }
+        return pairs;
+      };
+
+      var text1 = " Ala  Nowa  Ania  Ttr  Ola  Usd  Ula  Ksdf  Ewa  Jksd "
+      var text2 = "324230 90234 j][< Emilia ] /.,';][  Orian "
+      var text3 = " Ania  ola  Kowalska  KAsia "
+      var text4 = " --- Zofia - Rambo -****- Zofia -*%$#$%ala ula -- Norris  ++ Eulalia  // Skrzyp  iza Gordon  Freeman "
+      var text5 = "genia jadzia krycha celina barbara hilda jagoda eurydyka!"
+
+      QUnit.deepEqual(f(text1), finder(text1), 'correct value for ' + text1);
+      QUnit.deepEqual(f(text2), finder(text2), 'correct value for ' + text2);
+      QUnit.deepEqual(f(text3), finder(text3), 'correct value for ' + text3);
+      QUnit.deepEqual(f(text4), finder(text4), 'correct value for ' + text4);
+      QUnit.deepEqual(f(text5), finder(text5), 'correct value for ' + text5);
     });
   }
 });
@@ -1245,6 +1222,29 @@ tasks.add("sum-of-odd-numbers", {
       QUnit.strictEqual(f([[1, 4, 2], [-1, 6, 8, 3, [-3, 4, 0, -4, 5]], -5, -8]),0, 'correct value for f([[1, 4, 2], [-1, 6, 8, 3, [-3, 4, 0, -4, 5]], -5, -8])');
       QUnit.strictEqual(f([1, 4, 2], [-1, 6, 8, 3, [-3, 4, 0, -4, 5]], -5, -8),0, 'correct value for f([1, 4, 2], [-1, 6, 8, 3, [-3, 4, 0, -4, 5]], -5, -8)');
 
+    });
+  }
+});
+
+tasks.module("homework");
+
+tasks.add("sum-zero", {
+  instruction: "Write a function `f` it takes array `n`. Divide it in two other arrays first one there are elements whose don't sum to zero with other elements, the other one there are pair of elements which sum to zero. The order of elements should be like in input array. Return object with properities `rest` where are not \"zero-pair\" element and `zero` where are \"zero-pair\" elements. For example [3, 1, 2, 4, -2, -1] answer is {rest:[3, 4], zero:[1, -1, 2, -2]}. Number 0 isn't in any array. If in the array has different type than numeric return -1",
+  js: "var f = function(n){\n\n}",
+  tests: function(){
+    QUnit.test('test f', function(){
+      // for testing functions see: http://api.qunitjs.com/category/assert/
+      QUnit.notStrictEqual(f, undefined, 'f is defined');
+      QUnit.strictEqual(typeof f, 'function', 'f is a function');
+      QUnit.strictEqual(f([1, 'string', 2]), -1 , 'correct string check');
+      QUnit.deepEqual(f([1, 4, 5, 1, 2, -1, 10, -2]), {rest: [4, 5, 1, 10], zero: [1, -1, 2, -2]}, 'correct value for f([1, 4, 5, 1, 2, -1, 10, -2])');
+      QUnit.deepEqual(f([1, 5, -1]), {rest:[5], zero:[1, -1]}, 'correct value for f([1, 5, -1])');
+      QUnit.deepEqual(f([-1, 8, -8, 2, -2, 1, 3, -3, 10, 8, 1, -1, 2, 1, 6, -1, -2]), {rest:[10, 8, 6], zero:[-1, 1, 8, -8, 2, -2, 3, -3, 1, -1, 2, -2, 1, -1]}, 'correct value for f([-1, 8, -8, 2, -2, 1, 3, -3, 10, 8, 1, -1, 2, 1, 6, -1, -2])');
+      QUnit.deepEqual(f([4, -5, 5, -4, 7, 7, -2, 2, 5, 4, -7, 1, 4, 8]), {rest:[7, 5, 4, 1, 4, 8], zero:[4, -4, -5, 5, 7, -7, -2, 2]}, 'correct value for f([4, -5, 5, -4, 7, 7, -2, 2, 5, 4, -7, 1, 4, 8])');
+      QUnit.deepEqual(f([3, 9, -10, 1, 5, 4, 5, 5, 8, -6, 2, -4, 9, -9, -5, 4, 10, 6, 4, 5]), {rest:[3, 1, 5, 5, 8, 2, 9, 4, 4, 5], zero:[9, -9, -10, 10, 5, -5, 4, -4, -6, 6]}, 'correct value for f([3, 9, -10, 1, 5, 4, 5, 5, 8, -6, 2, -4, 9, -9, -5, 4, 10, 6, 4, 5])');
+      QUnit.deepEqual(f([6, -8, 3, -10, 4, 2, -6, -1, -6, 5, -4, 7, 3, 2, -2, 3, 2, 7, 6, 5, 4, -6, 1, 8, 7, 10, 6, 2, 8, 8, -10, -8, -7, 8, 10, 2, 4, -1, 1, 3, 2, -5, -1, 4, 2, -2, 9, -3, 10, -2, 6, -2, 5, 3, 1, 10, -8, 7, 4]
+), {rest:[3, 3, 7, 5, 4, 7, 8, 2, 4, 3, 2, 4, 2, 9, 10, 6, 5, 3, 10, 7, 4], zero:[6, -6, -8, 8, 3, -3, -10, 10, 4, -4, 2, -2, -1, 1, -6, 6, 5, -5, 7, -7, 2, -2, 2, -2, -6, 6, 2, -2, 8, -8, 8, -8, -10, 10, -1, 1, -1, 1]}, 'correct value 40 elements');
+      QUnit.deepEqual(f([]), {rest:[], zero:[]}, 'correct value for f([])');
     });
   }
 });
