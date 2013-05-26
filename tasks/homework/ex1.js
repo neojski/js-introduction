@@ -1,7 +1,7 @@
 tasks.module("homework");
 
 tasks.add("factorial", {
-  instruction: "Write a function `f` with takes argument `n` and `1!`. For incorrect arument return `-1`.",
+  instruction: "Write a function `f` with takes argument `n` and returns `n!`. For incorrect arument return `-1`.",
   js: "var f = function(n){\n\n}",
   tests: function(){
     test('test f', function(){
