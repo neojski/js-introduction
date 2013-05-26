@@ -5,7 +5,8 @@
   "dependencies": {
     "grunt": "*",
     "grunt-contrib-concat": "*",
-    "grunt-contrib-watch": "*"
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-connect": "*"
   }
 }
 

@@ -27,6 +27,15 @@ module.exports = function(grunt) {
         }
       }
     },
+    connect: {
+      server: {
+        options: {
+          base: '.',
+          port: 8000,
+          keepalive: true
+        }
+      }
+    },
     watch: {
       files: 'tasks/**',
       tasks: ['concat']
@@ -35,6 +44,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   grunt.registerTask('default', ['concat']);
 };
