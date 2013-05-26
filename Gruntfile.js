@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: 'tasks/*',
+      files: 'tasks/**',
       tasks: ['concat']
     }
   });
