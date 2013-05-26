@@ -2,7 +2,7 @@ tasks.module("homework");
 
 tasks.add("fibo-numbers", {
   instruction: "Write a function `f` with takes arguments `n` and `p` and returns `{fn: n-th fibonacci number (f0 = 0, f1 = 1), sum: sum of all fibonacci numbers less or equal fn modulo p}`. For incorrect arument return `{-1, -1}`.",
-  js: "var f = function(n,p){\n\n}",
+  js: "var f = function(n,p){\n\n};",
   tests: function () {
     test('test f', function () {
       // for testing functions see: http://api.qunitjs.com/category/assert/

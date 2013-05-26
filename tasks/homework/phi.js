@@ -2,7 +2,7 @@ tasks.module("homework");
 
 tasks.add("phi", {
   instruction: "Write a function phi which for given `n >= 1` returns `phi(n)=#{1<=k<=n : gcd(k,n)=1}`.",
-  js: "var phi = function(n) {\n\n}",
+  js: "var phi = function(n) {\n\n};",
   tests: function() {
     test('test', function(){
       notStrictEqual(phi, undefined, 'phi is defined');

@@ -1,8 +1,8 @@
 tasks.module("homework");
 
 tasks.add("function-composition", {
-  instruction: "Write a function compose(f, g) which, for given functions f:Y->Z, g:X->Y, returns function h=f∘g. You can assume that g takes only one argument.",
-  js: "var compose = function(f, g){\n\n}",
+  instruction: "Write a function `compose(f, g)` which, for given functions `f:Y->Z`, `g:X->Y`, returns function `h=f∘g`. You can assume that `g` takes only one argument.",
+  js: "var compose = function(f, g){\n\n};",
   tests: function(){
     test('test compose', function(){
       // for testing functions see: http://api.qunitjs.com/category/assert/

@@ -2,7 +2,7 @@ tasks.module("homework");
 
 tasks.add("factory", {
   instruction: "Write a function `factory` with takes two arrays `instructions` and `material` as arguments and returns an array `results`, containing results of instructions. If the instruction is 0, take two numbers from `material` and add them, then write the result to the `results`. Instruction 1 does the same, but the operation is multiplying. If the instruction array is empty, return an empty array",
-  js: "var factory = function(instructions,material){\n\n}",
+  js: "var factory = function(instructions,material){\n\n};",
   tests: function () {
     test('test factory', function () {
       // for testing functions see: http://api.qunitjs.com/category/assert/

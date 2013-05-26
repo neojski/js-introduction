@@ -1,8 +1,8 @@
 tasks.module("homework");
 
-tasks.add("Roman-numerals", {
-  instruction: "Write a function `f` which takes an integer smaller than 4000 as an argument and returns a string- it's Roman representation.",
-  js: "var f = function(n){\n\n}",
+tasks.add("roman-numerals", {
+  instruction: "Write a function `f` which takes an integer smaller than 4000 as an argument and returns a string - its Roman representation.",
+  js: "var f = function(n){\n\n};",
   tests: function () {
     test('test f', function () {
       // for testing functions see: http://api.qunitjs.com/category/assert/

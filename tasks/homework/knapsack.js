@@ -2,7 +2,7 @@ tasks.module("homework");
 
 tasks.add("knapsack-problem", {
   instruction: "Write a function that takes four parameters: `n`, `W`, `weights[]`, `costs[]` denoting consequently: number of items, knapsack's capacity, array of items' weights and array of items' costs, and which returns the maximal total cost of items that can be taken to the knapsack so that their total weight does not exceed `W`",
-  js: "var f = function(n,W,weights,costs){\n\n}",
+  js: "var f = function(n,W,weights,costs){\n\n};",
   tests: function(){
     test('test f', function(){
       // for testing functions see: http://api.qunitjs.com/category/assert/

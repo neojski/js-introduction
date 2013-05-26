@@ -2,20 +2,26 @@ tasks.module("homework");
 
 tasks.add("sum-of-odd-numbers", {
   instruction: "Write a function `f` which takes arbitrary number of arrays of (possibly arrays of: possibly arrays of: and so on) integers and returns sum of odd integers from these arrays.",
-  js: "var f = function(array){\n\n}",
+  js: "var f = function(array){\n\n};",
   tests: function () {
     test('test f', function () {
       // for testing functions see: http://api.qunitjs.com/category/assert/
       notStrictEqual(f, undefined, 'f is defined');
       strictEqual(typeof f, 'function', 'f is a function');
+      strictEqual(f(), 0, 'correct value for f()');
 
       var res = [];
+      var nested = [];
+      var nestedDesc = '[]';
       var ans = 0;
-      for (var i = 0; i < 100; i++) {
+      for (var i = 0; i < 10; i++) {
         res[i] = i;
+        nested = [nested, [i]];
+        nestedDesc = '[' + nestedDesc + ',['+i+']]';
         if (i % 2 === 1)
           ans += i;
-        strictEqual(f(res), ans, 'correct value of f(' + i + ')');
+        strictEqual(f(res), ans, 'correct value of f(' + res + ')');
+        strictEqual(f(nested), ans, 'correct value of f(' + nestedDesc + ')');
       }
 
       strictEqual(f([0]), 0, 'correct value for f([0])');

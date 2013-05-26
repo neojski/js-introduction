@@ -813,77 +813,41 @@ tasks.add('returning-object', {
 
 tasks.module("homework");
 
-tasks.add("fibo-numbers", {
-  instruction: "Write a function `f` with takes arguments `n` and `p` and returns `{fn: n-th fibonacci number (f0 = 0, f1 = 1), sum: sum of all fibonacci numbers less or equal fn modulo p}`. For incorrect arument return `{-1, -1}`.",
-  js: "var f = function(n,p){\n\n}",
-  tests: function () {
-    QUnit.test('test f', function () {
-      // for testing functions see: http://api.qunitjs.com/category/assert/
-      QUnit.notStrictEqual(f, undefined, 'f is defined');
-      QUnit.strictEqual(typeof f, 'function', 'f is a function');
+tasks.add('circles', {
+  instruction: 'You have given several smaller circles (class: `circle`) and one bigger (id: `big`). Write function `onClick` which moves all smaller circles inside bigger one when button is clicked. Use `top` and `left` properties.',
 
-      var f0 = 0;
-      var f1 = 1;
-      var f2 = 1;
-      var s = 0;
-      for (var j = 2; j < 8; j++) {
-        f0 = 0;
-        f1 = 1;
-        f2 = 1;
-        s = 0;
-        for (var i = 0; i < 15; i++) {
-          f2 = f1+f0;
-          QUnit.deepEqual(f(i,j), {fn: f0, sum: s}, 'correct value of f(' + i + ',' + j + ')');
-          f0 = f1;
-          f1 = f2;
-          s = s + f0;
-          s = s % j;
-        }
-      }
-      QUnit.deepEqual(f(0,2), {fn: 0, sum: 0}, 'correct value for f(0,2)');
-      QUnit.deepEqual(f(-1,2), {fn: -1, sum: -1}, 'correct value for f(-1,2)');
-      QUnit.deepEqual(f(1,-2), {fn: -1, sum: -1}, 'correct value for f(1,-2)');
+  html: '\
+  <div style="height: 200px; width: 100%;position:relative">\
+  <div id="big" style="position: absolute;border-radius: 50%;width: 100px;height: 100px;top:25%; left:3%;background-color: #bbb;"> </div>\
+  <div class="circle" style="position: absolute;border-radius: 50%;  width: 20px;  height: 20px;background-color: #ff0;top: 23%;left: 71%;"> </div>\
+  <div class="circle" style="position: absolute;border-radius: 50%;width: 20px;height: 20px;background-color: #ff0;top: 25%;left: 66%;"> </div>\
+  <div class="circle" style="position: absolute;border-radius: 50%;width: 20px;height: 20px;background-color: #ff0;top: 9%;left: 58%;"> </div>\
+  <div class="circle" style="position: absolute;border-radius: 50%;width: 20px;height: 20px;background-color: #ff0;top: 38%;left: 36%;"> </div>\
+  <div class="circle" style="position: absolute;border-radius: 50%;  width: 20px;  height: 20px;background-color: #ff0;top: 33%;left: 51%;"> </div></div>',
+
+  js: 'function onClick(){\n\t//TODO\n}',
+  tests: function(){
+    QUnit.test('circles', function(){
+      QUnit.notStrictEqual(onClick, undefined, 'onClick is defined');
+      QUnit.strictEqual(typeof onClick, 'function', 'onClick is a function');
+      var r1 = $('#big').width()/2;
+      onClick();
+      var r2 = $('#big').width()/2;
+      QUnit.strictEqual(r1,r2,'radius is unchanged');
+      var counter = 1;
+      $('.circle').each(function() {
+        var r = $('#big').width()/2;
+        var x = $('#big').position().left+r;
+        var y = $('#big').position().top+r;
+        var r1 = $(this).width()/2;
+        var x1 = $(this).position().left+r1;
+        var y1 = $(this).position().top+r1;
+        var dist = Math.sqrt((x1-x)*(x1-x)+(y1-y)*(y1-y));
+        QUnit.ok(dist < r - r1,"circle"+counter+" inside");
+        counter++;
+      });
     });
   }
-});
-
-tasks.module("homework");
-
-tasks.add('circles', {
-	instruction: 'You have given several smaller circles (class: `circle`) and one bigger (id: `big`). Write function `onClick` which moves all smaller circles inside bigger one when button is clicked. Use `top` and `left` properties.',
-
-	html: '\
-	<div style="height: 200px; width: 100%;position:relative">\
-	<div id="big" style="position: absolute;border-radius: 50%;width: 100px;height: 100px;top:25%; left:3%;background-color: #bbb;"> </div>\
-	<div class="circle" style="position: absolute;border-radius: 50%;  width: 20px;  height: 20px;background-color: #ff0;top: 23%;left: 71%;"> </div>\
-	<div class="circle" style="position: absolute;border-radius: 50%;width: 20px;height: 20px;background-color: #ff0;top: 25%;left: 66%;"> </div>\
-	<div class="circle" style="position: absolute;border-radius: 50%;width: 20px;height: 20px;background-color: #ff0;top: 9%;left: 58%;"> </div>\
-	<div class="circle" style="position: absolute;border-radius: 50%;width: 20px;height: 20px;background-color: #ff0;top: 38%;left: 36%;"> </div>\
-	<div class="circle" style="position: absolute;border-radius: 50%;  width: 20px;  height: 20px;background-color: #ff0;top: 33%;left: 51%;"> </div></div>',
-  	
-	js: 'function onClick(){\n\t//TODO\n}',
-	tests: function(){
-		QUnit.test('circles', function(){
-			QUnit.notStrictEqual(onClick, undefined, 'onClick is defined');
-			QUnit.strictEqual(typeof onClick, 'function', 'onClick is a function');
-			var r1 = $('#big').width()/2;
-			onClick();
-			var r2 = $('#big').width()/2;
-			QUnit.strictEqual(r1,r2,'radius is unchanged');
-			var counter = 1;
-			$('.circle').each(function() {
-				var r = $('#big').width()/2;
-				var x = $('#big').position().left+r;
-				var y = $('#big').position().top+r;
-				var r1 = $(this).width()/2;
-				var x1 = $(this).position().left+r1;
-				var y1 = $(this).position().top+r1;
-				var dist = Math.sqrt((x1-x)*(x1-x)+(y1-y)*(y1-y));
-				QUnit.ok(dist < r - r1,"circle"+counter+" inside");
-				counter++;
-			});
-		});
-	}
 });
 
 tasks.module("homework");
@@ -934,7 +898,7 @@ tasks.module("homework");
 
 tasks.add("factory", {
   instruction: "Write a function `factory` with takes two arrays `instructions` and `material` as arguments and returns an array `results`, containing results of instructions. If the instruction is 0, take two numbers from `material` and add them, then write the result to the `results`. Instruction 1 does the same, but the operation is multiplying. If the instruction array is empty, return an empty array",
-  js: "var factory = function(instructions,material){\n\n}",
+  js: "var factory = function(instructions,material){\n\n};",
   tests: function () {
     QUnit.test('test factory', function () {
       // for testing functions see: http://api.qunitjs.com/category/assert/
@@ -1007,9 +971,45 @@ tasks.add("factory", {
 
 tasks.module("homework");
 
+tasks.add("fibo-numbers", {
+  instruction: "Write a function `f` with takes arguments `n` and `p` and returns `{fn: n-th fibonacci number (f0 = 0, f1 = 1), sum: sum of all fibonacci numbers less or equal fn modulo p}`. For incorrect arument return `{-1, -1}`.",
+  js: "var f = function(n,p){\n\n};",
+  tests: function () {
+    QUnit.test('test f', function () {
+      // for testing functions see: http://api.qunitjs.com/category/assert/
+      QUnit.notStrictEqual(f, undefined, 'f is defined');
+      QUnit.strictEqual(typeof f, 'function', 'f is a function');
+
+      var f0 = 0;
+      var f1 = 1;
+      var f2 = 1;
+      var s = 0;
+      for (var j = 2; j < 8; j++) {
+        f0 = 0;
+        f1 = 1;
+        f2 = 1;
+        s = 0;
+        for (var i = 0; i < 15; i++) {
+          f2 = f1+f0;
+          QUnit.deepEqual(f(i,j), {fn: f0, sum: s}, 'correct value of f(' + i + ',' + j + ')');
+          f0 = f1;
+          f1 = f2;
+          s = s + f0;
+          s = s % j;
+        }
+      }
+      QUnit.deepEqual(f(0,2), {fn: 0, sum: 0}, 'correct value for f(0,2)');
+      QUnit.deepEqual(f(-1,2), {fn: -1, sum: -1}, 'correct value for f(-1,2)');
+      QUnit.deepEqual(f(1,-2), {fn: -1, sum: -1}, 'correct value for f(1,-2)');
+    });
+  }
+});
+
+tasks.module("homework");
+
 tasks.add("function-composition", {
-  instruction: "Write a function compose(f, g) which, for given functions f:Y->Z, g:X->Y, returns function h=f∘g. You can assume that g takes only one argument.",
-  js: "var compose = function(f, g){\n\n}",
+  instruction: "Write a function `compose(f, g)` which, for given functions `f:Y->Z`, `g:X->Y`, returns function `h=f∘g`. You can assume that `g` takes only one argument.",
+  js: "var compose = function(f, g){\n\n};",
   tests: function(){
     QUnit.test('test compose', function(){
       // for testing functions see: http://api.qunitjs.com/category/assert/
@@ -1035,7 +1035,7 @@ tasks.module("homework");
 
 tasks.add("knapsack-problem", {
   instruction: "Write a function that takes four parameters: `n`, `W`, `weights[]`, `costs[]` denoting consequently: number of items, knapsack's capacity, array of items' weights and array of items' costs, and which returns the maximal total cost of items that can be taken to the knapsack so that their total weight does not exceed `W`",
-  js: "var f = function(n,W,weights,costs){\n\n}",
+  js: "var f = function(n,W,weights,costs){\n\n};",
   tests: function(){
     QUnit.test('test f', function(){
       // for testing functions see: http://api.qunitjs.com/category/assert/
@@ -1060,7 +1060,7 @@ tasks.module("homework");
 
 tasks.add("phi", {
   instruction: "Write a function phi which for given `n >= 1` returns `phi(n)=#{1<=k<=n : gcd(k,n)=1}`.",
-  js: "var phi = function(n) {\n\n}",
+  js: "var phi = function(n) {\n\n};",
   tests: function() {
     QUnit.test('test', function(){
       QUnit.notStrictEqual(phi, undefined, 'phi is defined');
@@ -1092,7 +1092,7 @@ tasks.module("homework");
 
 tasks.add("prime-numbers", {
   instruction: "Write a function `f` with takes argument `n` and returns object `{left: x, right: y}` where `x` is the largest prime number less than `n` and `y` is the smallest prime number greater than `n`. If `x` (or `y`) does not exists `x` then `x = -1` (or `y = -1`).",
-  js: "var f = function(n){\n\n}",
+  js: "var f = function(n){\n\n};",
   tests: function(){
     QUnit.test('test f', function(){
       // for testing functions see: http://api.qunitjs.com/category/assert/
@@ -1117,7 +1117,7 @@ tasks.add("regexp-names", {
   instruction: "Write a function `f` which takes string `text` as argument and returns an array of pairs of " +
     "first name and second name. This array has to be sorted by (first name, second name) in lexicographical order and every word it contains has to be reversed after that operation. In addition to that, there is guarantee, that every name starts with uppercase, consists only of english letters  and it is surrounded by spaces on both ends. " +
     " There is always even number of names in text and the second name is proceded by the first name.",
-  js: "var f = function(text){\n\n}",
+  js: "var f = function(text){\n\n};",
   tests: function(){
     QUnit.test('test f', function(){
       // for testing functions see: http://api.qunitjs.com/category/assert/
@@ -1161,9 +1161,9 @@ tasks.add("regexp-names", {
 
 tasks.module("homework");
 
-tasks.add("Roman-numerals", {
-  instruction: "Write a function `f` which takes an integer smaller than 4000 as an argument and returns a string- it's Roman representation.",
-  js: "var f = function(n){\n\n}",
+tasks.add("roman-numerals", {
+  instruction: "Write a function `f` which takes an integer smaller than 4000 as an argument and returns a string - its Roman representation.",
+  js: "var f = function(n){\n\n};",
   tests: function () {
     QUnit.test('test f', function () {
       // for testing functions see: http://api.qunitjs.com/category/assert/
@@ -1198,20 +1198,26 @@ tasks.module("homework");
 
 tasks.add("sum-of-odd-numbers", {
   instruction: "Write a function `f` which takes arbitrary number of arrays of (possibly arrays of: possibly arrays of: and so on) integers and returns sum of odd integers from these arrays.",
-  js: "var f = function(array){\n\n}",
+  js: "var f = function(array){\n\n};",
   tests: function () {
     QUnit.test('test f', function () {
       // for testing functions see: http://api.qunitjs.com/category/assert/
       QUnit.notStrictEqual(f, undefined, 'f is defined');
       QUnit.strictEqual(typeof f, 'function', 'f is a function');
+      QUnit.strictEqual(f(), 0, 'correct value for f()');
 
       var res = [];
+      var nested = [];
+      var nestedDesc = '[]';
       var ans = 0;
-      for (var i = 0; i < 100; i++) {
+      for (var i = 0; i < 10; i++) {
         res[i] = i;
+        nested = [nested, [i]];
+        nestedDesc = '[' + nestedDesc + ',['+i+']]';
         if (i % 2 === 1)
           ans += i;
-        QUnit.strictEqual(f(res), ans, 'correct value of f(' + i + ')');
+        QUnit.strictEqual(f(res), ans, 'correct value of f(' + res + ')');
+        QUnit.strictEqual(f(nested), ans, 'correct value of f(' + nestedDesc + ')');
       }
 
       QUnit.strictEqual(f([0]), 0, 'correct value for f([0])');
@@ -1229,14 +1235,15 @@ tasks.add("sum-of-odd-numbers", {
 tasks.module("homework");
 
 tasks.add("sum-zero", {
-  instruction: "Write a function `f` it takes array `n`. Divide it in two other arrays first one there are elements whose don't sum to zero with other elements, the other one there are pair of elements which sum to zero. The order of elements should be like in input array. Return object with properities `rest` where are not \"zero-pair\" element and `zero` where are \"zero-pair\" elements. For example [3, 1, 2, 4, -2, -1] answer is {rest:[3, 4], zero:[1, -1, 2, -2]}. Number 0 isn't in any array. If in the array has different type than numeric return -1",
-  js: "var f = function(n){\n\n}",
+  instruction: "Write a function `f` it takes array `n`. Divide it in two other arrays: first one are pairs of element which sum to zero (if `x` has some `-x` in the array it becomes its pair and both disappear), second is all other elements. The order of elements should be like in the input array. Return object with properities `rest` where are non-\"zero-pair\" element and `zero` where are \"zero-pair\" elements. For example `[3, 1, 2, 4, -2, -1, 1]` answer is `{zero:[1, -1, 2, -2], rest:[3, 4, 1]}`. Number `0` isn't in any array. If in the array has different type than numeric return `-1`",
+  js: "var f = function(n){\n\n};",
   tests: function(){
     QUnit.test('test f', function(){
       // for testing functions see: http://api.qunitjs.com/category/assert/
       QUnit.notStrictEqual(f, undefined, 'f is defined');
       QUnit.strictEqual(typeof f, 'function', 'f is a function');
       QUnit.strictEqual(f([1, 'string', 2]), -1 , 'correct string check');
+      QUnit.deepEqual(f([3, 1, 2, 4, -2, -1, 1]), {rest: [3, 4, 1], zero: [1, -1, 2, -2]}, 'example');
       QUnit.deepEqual(f([1, 4, 5, 1, 2, -1, 10, -2]), {rest: [4, 5, 1, 10], zero: [1, -1, 2, -2]}, 'correct value for f([1, 4, 5, 1, 2, -1, 10, -2])');
       QUnit.deepEqual(f([1, 5, -1]), {rest:[5], zero:[1, -1]}, 'correct value for f([1, 5, -1])');
       QUnit.deepEqual(f([-1, 8, -8, 2, -2, 1, 3, -3, 10, 8, 1, -1, 2, 1, 6, -1, -2]), {rest:[10, 8, 6], zero:[-1, 1, 8, -8, 2, -2, 3, -3, 1, -1, 2, -2, 1, -1]}, 'correct value for f([-1, 8, -8, 2, -2, 1, 3, -3, 10, 8, 1, -1, 2, 1, 6, -1, -2])');
@@ -1244,6 +1251,7 @@ tasks.add("sum-zero", {
       QUnit.deepEqual(f([3, 9, -10, 1, 5, 4, 5, 5, 8, -6, 2, -4, 9, -9, -5, 4, 10, 6, 4, 5]), {rest:[3, 1, 5, 5, 8, 2, 9, 4, 4, 5], zero:[9, -9, -10, 10, 5, -5, 4, -4, -6, 6]}, 'correct value for f([3, 9, -10, 1, 5, 4, 5, 5, 8, -6, 2, -4, 9, -9, -5, 4, 10, 6, 4, 5])');
       QUnit.deepEqual(f([6, -8, 3, -10, 4, 2, -6, -1, -6, 5, -4, 7, 3, 2, -2, 3, 2, 7, 6, 5, 4, -6, 1, 8, 7, 10, 6, 2, 8, 8, -10, -8, -7, 8, 10, 2, 4, -1, 1, 3, 2, -5, -1, 4, 2, -2, 9, -3, 10, -2, 6, -2, 5, 3, 1, 10, -8, 7, 4]
 ), {rest:[3, 3, 7, 5, 4, 7, 8, 2, 4, 3, 2, 4, 2, 9, 10, 6, 5, 3, 10, 7, 4], zero:[6, -6, -8, 8, 3, -3, -10, 10, 4, -4, 2, -2, -1, 1, -6, 6, 5, -5, 7, -7, 2, -2, 2, -2, -6, 6, 2, -2, 8, -8, 8, -8, -10, 10, -1, 1, -1, 1]}, 'correct value 40 elements');
+      QUnit.deepEqual(f([1,1,-1,-2]), {rest:[1,-2], zero: [1, -1]}, 'correct value for f([1, 1, -1, -2]');
       QUnit.deepEqual(f([]), {rest:[], zero:[]}, 'correct value for f([])');
     });
   }

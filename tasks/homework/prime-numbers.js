@@ -2,7 +2,7 @@ tasks.module("homework");
 
 tasks.add("prime-numbers", {
   instruction: "Write a function `f` with takes argument `n` and returns object `{left: x, right: y}` where `x` is the largest prime number less than `n` and `y` is the smallest prime number greater than `n`. If `x` (or `y`) does not exists `x` then `x = -1` (or `y = -1`).",
-  js: "var f = function(n){\n\n}",
+  js: "var f = function(n){\n\n};",
   tests: function(){
     test('test f', function(){
       // for testing functions see: http://api.qunitjs.com/category/assert/

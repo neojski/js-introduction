@@ -4,7 +4,7 @@ tasks.add("regexp-names", {
   instruction: "Write a function `f` which takes string `text` as argument and returns an array of pairs of " +
     "first name and second name. This array has to be sorted by (first name, second name) in lexicographical order and every word it contains has to be reversed after that operation. In addition to that, there is guarantee, that every name starts with uppercase, consists only of english letters  and it is surrounded by spaces on both ends. " +
     " There is always even number of names in text and the second name is proceded by the first name.",
-  js: "var f = function(text){\n\n}",
+  js: "var f = function(text){\n\n};",
   tests: function(){
     test('test f', function(){
       // for testing functions see: http://api.qunitjs.com/category/assert/
