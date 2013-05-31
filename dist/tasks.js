@@ -878,24 +878,6 @@ tasks.add("factorial", {
 
 tasks.module("homework");
 
-tasks.add("html-shuffling", {
-  instruction: "Sort `&lt;li&gt;`'s children of `&lt;ul id='list'&gt;`",
-  html: '<ul id="list"><li data-content="5">5</li><li id="3">3</li><li class="2">2</li><li name="1">1</li><li data-value="4">4</li></ul>',
-  tests: function(){
-    QUnit.test('test', function(){
-      // for testing functions see: http://api.qunitjs.com/category/assert/
-      var li = $('#list li');
-      QUnit.strictEqual($(li[0]).attr('name'), '1', 'st ok');
-      QUnit.strictEqual($(li[1]).attr('class'), '2', 'nd ok');
-      QUnit.strictEqual($(li[2]).attr('id'), '3', 'rd ok');
-      QUnit.strictEqual($(li[3]).attr('data-value'), '4', '4th ok');
-      QUnit.strictEqual($(li[4]).attr('data-content'), '5', '5th ok');
-    });
-  }
-});
-
-tasks.module("homework");
-
 tasks.add("factory", {
   instruction: "Write a function `factory` with takes two arrays `instructions` and `material` as arguments and returns an array `results`, containing results of instructions. If the instruction is 0, take two numbers from `material` and add them, then write the result to the `results`. Instruction 1 does the same, but the operation is multiplying. If the instruction array is empty, return an empty array",
   js: "var factory = function(instructions,material){\n\n};",
@@ -1027,6 +1009,24 @@ tasks.add("function-composition", {
       QUnit.strictEqual(compose(doub, rev)('abc'), 'cbacba', 'correct value for x+x, reverse(x)');
       QUnit.strictEqual(compose(inc, doub)(4), 9, 'correct value for x+1, 2*x');
       QUnit.strictEqual(compose(doub, inc)(4), 10, 'correct value for 2*x, x+1');
+    });
+  }
+});
+
+tasks.module("homework");
+
+tasks.add("html-shuffling", {
+  instruction: "Sort `&lt;li&gt;`'s children of `&lt;ul id='list'&gt;`",
+  html: '<ul id="list"><li data-content="5">5</li><li id="3">3</li><li class="2">2</li><li name="1">1</li><li data-value="4">4</li></ul>',
+  tests: function(){
+    QUnit.test('test', function(){
+      // for testing functions see: http://api.qunitjs.com/category/assert/
+      var li = $('#list li');
+      QUnit.strictEqual($(li[0]).attr('name'), '1', 'st ok');
+      QUnit.strictEqual($(li[1]).attr('class'), '2', 'nd ok');
+      QUnit.strictEqual($(li[2]).attr('id'), '3', 'rd ok');
+      QUnit.strictEqual($(li[3]).attr('data-value'), '4', '4th ok');
+      QUnit.strictEqual($(li[4]).attr('data-content'), '5', '5th ok');
     });
   }
 });
@@ -1216,7 +1216,8 @@ tasks.add("sum-of-odd-numbers", {
         nestedDesc = '[' + nestedDesc + ',['+i+']]';
         if (i % 2 === 1)
           ans += i;
-        QUnit.strictEqual(f(res), ans, 'correct value of f(' + res + ')');
+        QUnit.strictEqual(f.apply(null, res), ans, 'correct value of f(' + res + ')');
+        QUnit.strictEqual(f(res), ans, 'correct value of f([' + res + '])');
         QUnit.strictEqual(f(nested), ans, 'correct value of f(' + nestedDesc + ')');
       }
 
