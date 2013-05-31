@@ -1216,7 +1216,7 @@ tasks.add("sum-of-odd-numbers", {
         nestedDesc = '[' + nestedDesc + ',['+i+']]';
         if (i % 2 === 1)
           ans += i;
-        QUnit.strictEqual(f.apply(null, res), ans, 'correct value of f(' + res + ')');
+        //QUnit.strictEqual(f.apply(null, res), ans, 'correct value of f(' + res + ')');
         QUnit.strictEqual(f(res), ans, 'correct value of f([' + res + '])');
         QUnit.strictEqual(f(nested), ans, 'correct value of f(' + nestedDesc + ')');
       }
