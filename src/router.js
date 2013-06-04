@@ -93,4 +93,8 @@ tasks.onLoad(function(){
   var tasksView = new TasksView(tasks.tasks);
   tasksView.render();
   Backbone.history.start();
+  // force update of statuses after models are loaded
+  tasks.tasks.each(function(task){
+    task.set('current', false);
+  });
 });

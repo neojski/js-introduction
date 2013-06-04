@@ -35,7 +35,7 @@ var Task = Backbone.Model.extend({
       alert("someone has forgotten tests!");
     },
     instructions: "someone has forgotten instruction to this test",
-    status: "none" 
+    status: "none"
   },
   getShortName: function(){
     var name = this.get('name');
