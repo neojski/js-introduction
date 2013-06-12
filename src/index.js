@@ -84,7 +84,8 @@ var Task = Backbone.Model.extend({
       undef:true,
       browser:true,
       jquery:true,
-      devel:true
+      devel:true,
+      shadow:true
     }, {window: false});
 
     var that = this;
