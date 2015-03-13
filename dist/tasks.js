@@ -853,7 +853,7 @@ tasks.add('circles', {
 tasks.module("homework");
 
 tasks.add("factorial", {
-  instruction: "Write a function `f` with takes argument `n` and returns `n!`. For incorrect arument return `-1`.",
+  instruction: "Write a function `f` with takes argument `n` and returns `n!`. For incorrect argument return `-1`.",
   js: "var f = function(n){\n\n}",
   tests: function(){
     QUnit.test('test f', function(){
